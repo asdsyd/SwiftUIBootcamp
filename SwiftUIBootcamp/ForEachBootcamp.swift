@@ -14,9 +14,9 @@ struct ForEachBootcamp: View {
     
     var body: some View {
         VStack(alignment: .leading, spacing: 15) {
-            ForEach(data.indices) { index in
-                Text("\(data[index]): \(index)")
-            }
+//            ForEach(data.indices) { index in
+//                Text("\(data[index]): \(index)")
+//            }
             ForEach(0..<100) { index in
                 Circle()
                     .frame(height: 50)
