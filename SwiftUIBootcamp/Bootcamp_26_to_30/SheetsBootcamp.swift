@@ -30,6 +30,7 @@ struct SheetsBootcamp: View {
 //                SecondScreen()
 //            })
             .sheet(isPresented: $showSheet) {
+                // DO NOT ADD CONDITIONAL LOGIC
                 SecondScreen()
             }
         }
