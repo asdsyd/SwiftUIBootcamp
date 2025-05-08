@@ -1,0 +1,77 @@
+//
+//  NavigationStackBootcamp.swift
+//  SwiftUIBootcamp
+//
+//  Created by Asad Sayeed on 06/05/25.
+//
+
+import SwiftUI
+
+struct NavigationStackBootcamp: View {
+    
+    let fruits = ["Apple", "Orange", "Banana"]
+    
+//    @State private var stackPath: [String] = ["One", "Two", "Three"]
+    @State private var stackPath: [String] = []
+    
+    var body: some View {
+        
+        NavigationStack(path: $stackPath) {
+            ScrollView {
+                VStack (spacing: 40) {
+                    
+                    Button("Super segue!") {
+                        stackPath.append(contentsOf: [
+                            "Coconut", "Watermelon", "Mango"
+                        ])
+                    }
+                    
+                    ForEach(fruits, id: \.self) { fruit in
+                        NavigationLink(value: fruit) {
+                            Text(fruit)
+                        }
+                    }
+                    
+                    
+                    ForEach(0..<10) { x in
+                        
+                        NavigationLink(value: x) {
+                            Text("Click me: \(x)")
+                        }
+                        
+//                        NavigationLink(
+//                            destination: MySecondScreen(value: x),
+//                            label: {
+//                            })
+                    }
+                }
+            }
+            .navigationTitle("Nav Bootcamp")
+            .navigationDestination(for: Int.self) { value in
+                MySecondScreen(value: value)
+            }
+            .navigationDestination(for: String.self) { value in
+                Text("ANOTHER SCREEN: \(value)")
+            }
+        }
+    }
+}
+
+struct MySecondScreen: View {
+    
+    let value: Int
+    
+    init(value: Int) {
+        self.value = value
+        print("INIT SCREEN: \(value)")
+    }
+    
+    
+    var body: some View {
+        Text("Screen \(value)")
+    }
+}
+
+#Preview {
+    NavigationStackBootcamp()
+}
