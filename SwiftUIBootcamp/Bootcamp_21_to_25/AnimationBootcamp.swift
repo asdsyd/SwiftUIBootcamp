@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+@available(iOS, introduced: 13.0, deprecated: 15.0, message: "Use withAnimation or animation(_:value:) instead.")
 struct AnimationBootcamp: View {
     
     @State var isAnimated: Bool = false
@@ -29,7 +30,7 @@ struct AnimationBootcamp: View {
                     Animation
                         .default
                         .repeatForever(autoreverses: true)
-                    , value: isAnimated)
+                    )
                 .offset(y: isAnimated ? 300 : 0)
 
             
